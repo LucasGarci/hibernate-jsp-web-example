@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-feb-2018 17:54:18 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Gastos" table="gastos" catalog="academia" optimistic-lock="version">
+        <id name="idGastos" type="java.lang.Integer">
+            <column name="idGastos" />
+            <generator class="identity" />
+        </id>
+        <property name="importe" type="float">
+            <column name="importe" precision="7" not-null="true" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="concepto" type="string">
+            <column name="concepto" length="50" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="200" />
+        </property>
+        <property name="formapago" type="string">
+            <column name="formapago" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

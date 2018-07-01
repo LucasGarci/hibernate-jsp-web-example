@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-feb-2018 17:54:18 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Clase" table="clase" catalog="academia" optimistic-lock="version">
+        <id name="idClase" type="java.lang.Integer">
+            <column name="idClase" />
+            <generator class="identity" />
+        </id>
+        <property name="capacidad" type="java.lang.Integer">
+            <column name="capacidad" />
+        </property>
+        <property name="nombreclase" type="string">
+            <column name="nombreclase" length="30" />
+        </property>
+        <set name="grupos" table="grupo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDClase" not-null="true" />
+            </key>
+            <one-to-many class="model.Grupo" />
+        </set>
+    </class>
+</hibernate-mapping>

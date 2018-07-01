@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-feb-2018 17:54:18 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Alumno" table="alumno" catalog="academia" optimistic-lock="version">
+        <id name="dnialumno" type="string">
+            <column name="DNIAlumno" length="9" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="grupo" class="model.Grupo" fetch="select">
+            <column name="IDGrupo" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="40" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="80" not-null="true" />
+        </property>
+        <property name="fechnac" type="timestamp">
+            <column name="fechnac" length="19" not-null="true" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" length="40" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="40" />
+        </property>
+        <property name="fechaingreso" type="timestamp">
+            <column name="fechaingreso" length="19" not-null="true" />
+        </property>
+        <property name="telefonopersonal" type="int">
+            <column name="telefonopersonal" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="80" />
+        </property>
+        <property name="codpostal" type="java.lang.Integer">
+            <column name="codpostal" />
+        </property>
+        <property name="telefonofijo" type="int">
+            <column name="telefonofijo" not-null="true" />
+        </property>
+        <property name="nombrefamiliar" type="string">
+            <column name="nombrefamiliar" length="40" />
+        </property>
+        <property name="apellidofamiliar" type="string">
+            <column name="apellidofamiliar" length="80" />
+        </property>
+        <property name="telefonofamiliar" type="java.lang.Integer">
+            <column name="telefonofamiliar" />
+        </property>
+        <property name="emailfamiliar" type="string">
+            <column name="emailfamiliar" length="40" />
+        </property>
+        <set name="matriculas" table="matricula" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DNIalumno" length="9" not-null="true" />
+            </key>
+            <one-to-many class="model.Matricula" />
+        </set>
+    </class>
+</hibernate-mapping>
